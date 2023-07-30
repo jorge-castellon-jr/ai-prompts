@@ -72,7 +72,7 @@
 /* Tailwind Styles */
 
 body {
-  @apply bg-gray-800 m-0 p-0;
+  @apply bg-slate-800 text-slate-300;
 }
 
 .app {
@@ -80,7 +80,7 @@ body {
 }
 
 .white_btn {
-  @apply rounded-full border border-white bg-white py-1.5 px-5 text-white transition-all  text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-white bg-white py-1.5 px-5 text-slate-800 transition-all  text-center text-sm font-inter flex items-center justify-center;
 }
 
 .outline_btn {
@@ -143,11 +143,11 @@ body {
 }
 
 .dropdown {
-  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-slate-700 min-w-[210px] flex flex-col gap-2 justify-end items-end;
 }
 
 .dropdown_link {
-  @apply text-sm font-inter text-gray-700  font-medium;
+  @apply text-sm font-inter text-slate-200  font-medium;
 }
 
 /* PromptCard Component */
