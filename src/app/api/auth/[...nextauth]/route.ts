@@ -1,5 +1,5 @@
 import NextAuth from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
+import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google';
 import { SessionProviderProps } from 'next-auth/react';
 
 import User from '@/models/user';
@@ -12,36 +12,39 @@ const handler = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
     }),
   ],
-  async session({ session }: { session: SessionProviderProps['session'] }) {
-    const session_user = await User.findOne({
-      email: session?.user?.email || '',
-    });
+  callbacks: {
+    async session({ session }: { session: SessionProviderProps['session'] }) {
+      const session_user = await User.findOne({
+        email: session?.user?.email || '',
+      });
 
-    if (!!session && !!session.user) {
-      session.user.id = session_user?._id.toString();
-    }
-    return session;
-  },
-  async signIn({ profile }) {
-    try {
-      await connectToDB();
-
-      // Check if user exists
-      const user_exists = await User.findOne({ email: profile.email });
-
-      // If not, create user
-      if (!user_exists) {
-        await User.create({
-          email: profile.email,
-          username: profile.name.replace(/\s/g, '').toLowerCase(),
-          Image: profile.picture,
-        });
-        return true;
+      if (!!session && !!session.user) {
+        session.user.id = session_user?._id.toString();
       }
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
+      return session;
+    },
+    async signIn({ profile }: { profile: GoogleProfile }) {
+      try {
+        await connectToDB();
+
+        // Check if user exists
+        const user_exists = await User.findOne({ email: profile?.email });
+
+        // If not, create user
+        if (!user_exists) {
+          await User.create({
+            email: profile.email,
+            username: profile.name?.replace(/\s/g, '').toLowerCase(),
+            Image: profile.picture,
+          });
+          return true;
+        }
+        throw new Error('No user found and could not create one');
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+    },
   },
 });
 
