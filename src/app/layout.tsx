@@ -1,3 +1,4 @@
+import Nav from "@/components/Nav";
 import "@/styles/globals.scss";
 import type { Metadata } from "next";
 
@@ -17,7 +18,10 @@ export default function RootLayout({
         <div className="main">
           <div className="gradient"></div>
         </div>
-        <main className="app">{children}</main>
+        <main className="app">
+          <Nav />
+          {children}
+        </main>
       </body>
     </html>
   );
