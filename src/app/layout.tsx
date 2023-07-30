@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import "@/styles/globals.scss";
 import type { Metadata } from "next";
+import Provider from "@/components/Provider";
 
 export const metadata: Metadata = {
   title: "AI Prompts",
@@ -15,13 +16,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="main">
-          <div className="gradient"></div>
-        </div>
-        <main className="app">
-          <Nav />
-          {children}
-        </main>
+        <Provider>
+          <div className="main">
+            <div className="gradient"></div>
+          </div>
+          <main className="app">
+            <Nav />
+            {children}
+          </main>
+        </Provider>
       </body>
     </html>
   );
