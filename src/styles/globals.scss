@@ -76,19 +76,22 @@ body {
 }
 
 .app {
-  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto  px-6;
+  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
 
 .white_btn {
-  @apply rounded-full border border-white bg-white py-1.5 px-5 text-slate-800 transition-all  text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-white bg-white py-1.5 px-5 text-slate-800 transition-all  text-center text-sm font-inter flex items-center justify-center hover:text-slate-100 hover:bg-transparent;
+}
+.black_btn {
+  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
 }
 
 .outline_btn {
-  @apply rounded-full border border-white bg-transparent py-1.5 px-5 text-white transition-all  text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-white bg-transparent py-1.5 px-5 text-white transition-all hover:bg-white hover:text-slate-800 text-center text-sm font-inter flex items-center justify-center;
 }
 
 .head_text {
-  @apply mt-5 text-5xl font-extrabold leading-[1.15] text-slate-100;
+  @apply mt-5 text-5xl font-extrabold leading-[1.15] text-slate-200 sm:text-6xl;
 }
 
 .orange_gradient {
@@ -104,15 +107,15 @@ body {
 }
 
 .desc {
-  @apply mt-5 text-lg text-slate-300 max-w-2xl;
+  @apply mt-5 text-lg  sm:text-xl max-w-2xl;
 }
 
 .search_input {
-  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium;
+  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
 }
 
 .copy_btn {
-  @apply w-7 h-7 rounded-full bg-white/10 shadow-3xl backdrop-blur flex justify-center items-center cursor-pointer;
+  @apply w-7 h-7 rounded-full bg-black/10 shadow-3xl backdrop-blur flex justify-center items-center cursor-pointer;
 }
 
 .glassmorphism {
@@ -120,7 +123,7 @@ body {
 }
 
 .prompt_layout {
-  @apply space-y-6 py-8   ;
+  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
 }
 
 /* Feed Component */
@@ -139,20 +142,20 @@ body {
 
 /* Nav Component */
 .logo_text {
-  @apply  font-satoshi font-semibold text-lg text-slate-100 tracking-wide;
+  @apply max-sm:hidden font-satoshi font-semibold text-lg text-slate-100 tracking-wide;
 }
 
 .dropdown {
-  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-slate-700 min-w-[210px] flex flex-col gap-2 justify-end items-end;
+  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
 }
 
 .dropdown_link {
-  @apply text-sm font-inter text-slate-200  font-medium;
+  @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
 }
 
 /* PromptCard Component */
 .prompt_card {
-  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter  w-full h-fit;
+  @apply flex-1 break-inside-avoid rounded-lg border border-slate-900 bg-slate-800/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
 }
 
 .flex-center {
